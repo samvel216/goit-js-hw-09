@@ -13,13 +13,12 @@ function createPromise(position, delay) {
           reject({position, delay})      
 })     
 }
-
-const lalka = (event) => {
+const sendPromise = (event) => {
   event.preventDefault();
   const delayEl = Number(inputDelayEl.value);
   const stepEl = Number(inputStepEl.value);
   const amount = Number(inputAmountEl.value);
-  let mmm = 1;
+  let positionIndex = 1;
   setTimeout(() => {
     createPromise( 1 ,delayEl)
       .then(({ position, delay }) => {
@@ -31,21 +30,20 @@ const lalka = (event) => {
   },delayEl)
   setTimeout(() => {
     intervalId = setInterval(() => {
-      mmm ++;
-      if(mmm == amount){
+      positionIndex ++;
+      if(positionIndex == amount){
         clearInterval(intervalId);
       }
-      createPromise( mmm ,stepEl)
+      createPromise( positionIndex ,stepEl)
       .then(({ position, delay }) => {
         console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
         console.log(`❌ Rejected promise ${position} in ${delay}ms`);
       });
-      console.log(stepEl)
     }, stepEl) 
   }, delayEl) 
 }
-formEl.addEventListener('submit', lalka);
+formEl.addEventListener('submit', sendPromise);
 
 
