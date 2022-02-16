@@ -16,3 +16,69 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.btn-div {
+  text-align: center;
+}
+.btn-start {
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+  background-color: #fafafa;
+  border-color:  #212121;
+  font-size: 30px;
+}
+.btn-stop { 
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+ background-color: #fafafa;
+ border-color:  #212121;
+ font-size: 30px;
+}
+.btn-stop:hover {
+  background-color: blue;
+  border-color: blue;
+}
+.btn-start:hover {
+  background-color: blue;
+  border-color: blue;
+}
+.timer {
+  display: flex;
+  margin-top: 30px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+ }
+ .field:first-child { 
+  margin-left: 0px;
+ }
+.value {
+font-size: 40px;
+text-align: center;
+}
+.label {
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+}
+#datetime-picker {
+  width: 250px;
+  height: 40px;
+  font-size: 25px;
+}
+.btn-data-start {
+ margin-left: 20px;
+ padding-top: 5px;
+ padding-bottom: 5px;
+ padding-left: 10px;
+ padding-right: 10px;
+ font-size: 20px;
+}
+.align {
+  display: flex;
+  align-items: center;
+}
