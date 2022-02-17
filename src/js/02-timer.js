@@ -10,6 +10,7 @@ const dataMinutesEl = document.querySelector('[data-minutes]');
 const dataSecondsEl = document.querySelector('[data-seconds]');
 btnStartEl.disabled = true;
 let timerId = null; 
+const taimerWithoutMeaning = "00";
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
@@ -41,16 +42,39 @@ const calenders = flatpickr(inputEl, {
       }  
     },
 });
+const withoutTaimer = (taimerWithoutMeaning) => {
+ dataDaysEl.textContent = taimerWithoutMeaning;
+ dataHoursEl.textContent = taimerWithoutMeaning;
+ dataMinutesEl.textContent = taimerWithoutMeaning;
+ dataSecondsEl.textContent = taimerWithoutMeaning;
+}
+const getTaimerMeaning = (days,hours,minutes,seconds) => {
+  dataDaysEl.textContent = days;
+  if (days < 10) {
+   dataDaysEl.textContent = `0${+days}`
+  }
+  dataHoursEl.textContent = hours;
+  if (hours < 10) {
+    dataHoursEl.textContent = `0${+hours}`
+  }
+  dataMinutesEl.textContent = minutes;
+  if (minutes < 10) {
+    dataMinutesEl.textContent = `0${+minutes}`
+  }
+  dataSecondsEl.textContent = seconds;
+  if (seconds < 10) {
+    dataSecondsEl.textContent = `0${+seconds}`
+  }
+}
 const getTaimer = () => { 
   timerId = setInterval(() => {
   let taimerTime = calenders.selectedDates[0] - Date.now();
   if (taimerTime > 0 ) {
     const convertMsObject = convertMs(taimerTime);
     convertMs(taimerTime)
-      dataDaysEl.textContent = convertMsObject.days;
-      dataHoursEl.textContent = convertMsObject.hours;
-      dataMinutesEl.textContent = convertMsObject.minutes;
-      dataSecondsEl.textContent = convertMsObject.seconds;
+    getTaimerMeaning(convertMsObject.days,convertMsObject.hours,convertMsObject.minutes,convertMsObject.seconds);
+  } else {
+    withoutTaimer(taimerWithoutMeaning);
   }
   }, 1000)
 }

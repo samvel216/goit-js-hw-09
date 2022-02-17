@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+console.log(Notiflix);
 const inputDelayEl = document.querySelector("input[name='delay']");
 const inputStepEl = document.querySelector("input[name='step']");
 const inputAmountEl = document.querySelector("input[name='amount']");
@@ -22,10 +24,10 @@ const sendPromise = (event) => {
   setTimeout(() => {
     createPromise( 1 ,delayEl)
       .then(({ position, delay }) => {
-        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delayEl}ms`);
       })
       .catch(({ position, delay }) => {
-        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+        Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delayEl}ms`);
       });
   },delayEl)
   setTimeout(() => {
@@ -36,10 +38,10 @@ const sendPromise = (event) => {
       }
       createPromise( positionIndex ,stepEl)
       .then(({ position, delay }) => {
-        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+        Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
     }, stepEl) 
   }, delayEl) 
